@@ -1,7 +1,7 @@
-import { Page, Browser, chromium, Locator, Expect } from 'playwright/test';
+import { Page, Locator} from 'playwright';
 import { Base } from './base';
 
-export class PageLogin extends Base {
+export class LandingPage extends Base {
     public textLogo: Locator;
     public buttonShoppingCart: Locator;
     public buttonBurgerMenu: Locator;

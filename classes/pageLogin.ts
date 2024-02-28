@@ -1,4 +1,4 @@
-import { Page, Browser, chromium, Locator} from 'playwright/test';
+import { Page, Locator} from 'playwright';
 import { Base } from './base';
 
 export class PageLogin extends Base {
