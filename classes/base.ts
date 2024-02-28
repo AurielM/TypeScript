@@ -7,10 +7,6 @@ export class Base {
     constructor(page: Page) {
         this.page = page
     }
-   
-    public async setup() {
-        await this.page.goto('https://www.saucedemo.com/');
-    }
 
     public async close() {
         await  this.browser.close();
