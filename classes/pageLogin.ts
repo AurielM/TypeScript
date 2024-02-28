@@ -1,4 +1,4 @@
-import { Page, Browser, chromium, Locator, Expect } from 'playwright/test';
+import { Page, Browser, chromium, Locator} from 'playwright/test';
 import { Base } from './base';
 
 export class PageLogin extends Base {
@@ -32,13 +32,7 @@ export class PageLogin extends Base {
         await this.textboxPassword.fill(this.password)
         console.log(`Logging in with credentials\nUsername:    ${this.usernames[n]}\nPassword:    ${this.password}.`)
         await this.buttonLogin.click()
-    }
-
-    //public async CheckLoginError(){
-      //  await expect(this.errorMessage).toBeVisible();
-    //}
-        
-    
+    }      
 }
 
 
