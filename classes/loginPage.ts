@@ -1,7 +1,7 @@
 import { Page, Locator} from 'playwright';
 import { Base } from './base';
 
-export class PageLogin extends Base {
+export class LoginPage extends Base {
     public password: string;
     public usernames: string[];
     public buttonLogin: Locator;
