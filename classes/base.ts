@@ -1,8 +1,12 @@
-import { Page, Browser} from 'playwright';
+import { Page, Browser, Locator} from 'playwright';
 
 export class Base {
     public page: Page;
     private browser: Browser;
+    public buttonBurgerMenu: Locator;
+    public buttonFilter: Locator;
+    public textLogo: Locator;
+    public textPageTitle: Locator;
     public wrapperPageFooter: Locator;
     public buttonTwitterIcon: Locator;
     public buttonFacebookIcon: Locator;
@@ -11,6 +15,10 @@ export class Base {
 
     constructor(page: Page) {
         this.page = page
+        this.buttonBurgerMenu = page.locator('#react-burger-menu-btn');
+        this.buttonFilter = page.locator('select.product_sort_container');
+        this.textLogo = page.locator('div.app_logo');
+        this.textPageTitle = page.locator('span.title');
         this.wrapperPageFooter = page.locator('footer.footer');
         this.buttonTwitterIcon = this.wrapperPageFooter.locator('li.social_twitter');
         this.buttonFacebookIcon = this.wrapperPageFooter.locator('li.social_facebook');

@@ -1,7 +1,7 @@
 import { Page, Locator} from 'playwright';
 import { Base } from './base';
 
-export class ShoppingCartOverviewPage extends Base {
+export class ShoppingCartPage extends Base {
     public textTitleYourCart: Locator;
     public buttonShoppingCart: Locator;
     public counterShoppingCartTotal: Locator;

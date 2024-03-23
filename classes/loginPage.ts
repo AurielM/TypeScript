@@ -8,7 +8,8 @@ export class LoginPage extends Base {
     public textboxUsername: Locator;
     public textboxPassword: Locator;
     public errorMessage: Locator;
-
+    public textUsernames: Locator;
+    public textPassword: Locator;
 
     constructor(page: Page){
         super(page)
@@ -24,7 +25,9 @@ export class LoginPage extends Base {
         this.buttonLogin = page.locator('input.submit-button');
         this.textboxUsername = page.locator('#user-name');
         this.textboxPassword = page.locator('#password');
-        this.errorMessage = page.locator('div.error-message-container.error')
+        this.errorMessage = page.locator('div.error-message-container.error');
+        this.textUsernames = page.locator('div.login_credentials');
+        this.textPassword = page.locator('div.login_password');
     }
 
     public async LoginUser(n: number) {
