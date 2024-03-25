@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
   const landingPage = new LandingPage(page);
   
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto(loginPage.url);
   await loginPage.LoginUser(0)
   await expect(landingPage.textLogo).toBeVisible()
 });
@@ -34,7 +34,6 @@ test.describe('Pages contain all expected elements', () => {
     expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
     expect(landingPage.buttonInventoryItemName).toHaveCount(6)
     expect(landingPage.textInventoryItemPrice).toHaveCount(6)
-    expect(landingPage.textInventoryItemPrice).toHaveText('Add to cart')
     expect(landingPage.textInventoryItemDescription).toHaveCount(6)
     expect(landingPage.buttonAddToCart).toHaveCount(6)
     expect(landingPage.buttonRemoveFromCart).toBeHidden()
@@ -49,7 +48,7 @@ test.describe('Pages contain all expected elements', () => {
 
   test('Shopping cart page should contain all elements', async ({ page }) => {
     const shoppingCartPage = new ShoppingCartPage(page);
-    await page.goto('https://www.saucedemo.com/cart.html')
+    await page.goto(shoppingCartPage.url);
 
     // verify header, filter and menu
     expect(shoppingCartPage.textLogo).toBeVisible()
@@ -61,10 +60,10 @@ test.describe('Pages contain all expected elements', () => {
     // verify unique page contents
     expect(shoppingCartPage.buttonShoppingCart).toBeEnabled()
     expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
-    expect(shoppingCartPage.buttonInventoryItemTitle).toBeVisible()
-    expect(shoppingCartPage.textInventoryItemPrice).toBeVisible()
-    expect(shoppingCartPage.textInventoryItemDescription).toBeVisible()
-    expect(shoppingCartPage.buttonContinueShopping).toBeEnabled()
+    expect(shoppingCartPage.buttonInventoryItemTitle).toBeHidden()
+    expect(shoppingCartPage.textInventoryItemPrice).toBeHidden()
+    expect(shoppingCartPage.textInventoryItemDescription).toBeHidden()
+    expect(shoppingCartPage.buttonContinueShopping).toBeVisible()
     expect(shoppingCartPage.buttonCheckout).toBeEnabled()
 
     // verify footer contents
@@ -77,7 +76,8 @@ test.describe('Pages contain all expected elements', () => {
 
   test('Checkout information page should contain all elements', async ({ page }) => {
     const checkoutInformationPage = new CheckoutInformationPage(page);
-    await page.goto('https://www.saucedemo.com/checkout-step-one.html')
+    console.log(checkoutInformationPage.url)
+    await page.goto(checkoutInformationPage.url);
     
     // verify header, filter and menu
     expect(checkoutInformationPage.textLogo).toBeVisible()
@@ -104,14 +104,13 @@ test.describe('Pages contain all expected elements', () => {
 
   test('Checkout payment page should contain all elements', async ({ page }) => {
     const checkoutPaymentPage = new CheckoutPaymentPage(page);
-    await page.goto('https://www.saucedemo.com/checkout-step-two.html')
+    await page.goto(checkoutPaymentPage.url)
     
     // verify header, filter and menu
     expect(checkoutPaymentPage.textLogo).toBeVisible()
     expect(checkoutPaymentPage.textLogo).toHaveText('Swag Labs')
     expect(checkoutPaymentPage.textPageTitle).toHaveText('Checkout: Overview')
     expect(checkoutPaymentPage.buttonBurgerMenu).toBeEnabled()
-    expect(checkoutPaymentPage.buttonFilter).toBeEnabled()
 
     // verify unique page contents
     expect(checkoutPaymentPage.textItemCost).toBeVisible()
@@ -130,14 +129,13 @@ test.describe('Pages contain all expected elements', () => {
 
   test('Payment confirmation page should contain all elements', async ({ page }) => {
     const paymentConfirmationPage = new PaymentConfirmationPage(page);
-    await page.goto('https://www.saucedemo.com/checkout-complete.html')
+    await page.goto(paymentConfirmationPage.url)
     
     // verify header, filter and menu
     expect(paymentConfirmationPage.textLogo).toBeVisible()
     expect(paymentConfirmationPage.textLogo).toHaveText('Swag Labs')
     expect(paymentConfirmationPage.textPageTitle).toHaveText('Checkout: Complete!')
     expect(paymentConfirmationPage.buttonBurgerMenu).toBeEnabled()
-    expect(paymentConfirmationPage.buttonFilter).toBeEnabled()
 
     // verify unique page contents
     expect(paymentConfirmationPage.imgTickForOrderComplete).toBeVisible()
@@ -154,28 +152,52 @@ test.describe('Pages contain all expected elements', () => {
     });
   });
 
-test.describe('Adding items to shopping cart', () => {
+test.describe('Landing/Inventory page behaviour', () => {
   test('Adding item should update shoppping cart total icon', async ({ page }) => {
     const landingPage = new LandingPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
     const inventoryItemPage = new InventoryItemPage(page);
+
+
+
+
+    // add item from landing/inventory page
+
+    // add item from inventory item page
+    await landingPage.buttonInventoryItemName.nth(0).click()
+
+    expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    await inventoryItemPage.buttonAddToCart.click()
 
     // Creating inventory item variables for later comparison
     const first_item = await landingPage.buttonInventoryItemName.nth(0).textContent()
     const first_price = await landingPage.textInventoryItemPrice.nth(0).textContent()
     const first_description = await landingPage.textInventoryItemDescription.nth(0).textContent()
 
-    // Navigate to intenvtory item page
-    await landingPage.buttonInventoryItemName.nth(0).click()
+    
 
     // Verifying expected item present
     expect(inventoryItemPage.textInventoryItemName).toHaveText(first_item)
     expect(inventoryItemPage.textInventoryItemPrice).toHaveText(first_price)
     expect(inventoryItemPage.textInventoryItemDescription).toHaveText(first_description)
     
-    // Add item to shopping list 
-    expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
-    await inventoryItemPage.buttonAddToCart.click()
+    
+    
+
+    
+
+    // Verify new item in shopping cart
+    expect(shoppingCartPage.buttonInventoryItemTitle).toHaveText(first_item)
+    expect(shoppingCartPage.textInventoryItemDescription).toHaveText(first_description)
+    expect(shoppingCartPage.textInventoryItemPrice).toHaveText(first_price)
+    expect(inventoryItemPage.buttonAddToCart).toBeHidden()
+    expect(shoppingCartPage.buttonRemoveFromCartBackpack).toBeEnabled()
+    });
+});
+
+test.describe('Inventory item page behaviour', () => {
+  test('', async ({ page }) => {
+    const inventoryItemPage = new InventoryItemPage(page);
 
     // Verify button changes when adding/removing item from shopping cart
     expect(inventoryItemPage.buttonAddToCart).toBeHidden()
@@ -193,12 +215,5 @@ test.describe('Adding items to shopping cart', () => {
     expect(inventoryItemPage.buttonAddToCart).toBeHidden()
     expect(inventoryItemPage.buttonRemoveFromCart).toBeEnabled()
     expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
-
-    // Verify new item in shopping cart
-    expect(shoppingCartPage.buttonInventoryItemTitle).toHaveText(first_item)
-    expect(shoppingCartPage.textInventoryItemDescription).toHaveText(first_description)
-    expect(shoppingCartPage.textInventoryItemPrice).toHaveText(first_price)
-    expect(inventoryItemPage.buttonAddToCart).toBeHidden()
-    expect(shoppingCartPage.buttonRemoveFromCartBackpack).toBeEnabled()
-    });
+  });
 });

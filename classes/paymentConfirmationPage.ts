@@ -8,7 +8,8 @@ export class PaymentConfirmationPage extends Base {
     public buttonBackHome: Locator;
 
     constructor(page: Page){
-        super(page)
+        super(page);
+        this.url = this.url + 'checkout-complete.html';
         this.imgTickForOrderComplete = page.locator('img.pony_express');
         this.textThanksForYourOrder = page.locator('h2.complete-header');
         this.textOrderDispatched = page.locator('div.complete-text');

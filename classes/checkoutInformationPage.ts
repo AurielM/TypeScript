@@ -10,7 +10,8 @@ export class CheckoutInformationPage extends Base {
     public buttonContinue: Locator;
 
     constructor(page: Page){
-        super(page)
+        super(page);
+        this.url = this.url + 'checkout-step-one.html';
         this.textboxFirstName = page.locator('input#first-name');
         this.textboxLastName = page.locator('input#last-name');
         this.textboxPostCode = page.locator('input#postal-code');

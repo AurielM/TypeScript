@@ -14,7 +14,8 @@ export class InventoryItemPage extends Base {
     
 
     constructor(page: Page){
-        super(page)
+        super(page);
+        this.url = this.url + 'inventory-item.html?id=';
         this.textLogo = page.locator('div.app_logo');
         this.buttonShoppingCart = page.locator('a.shopping_cart_link');
         this.buttonBurgerMenu = page.locator('#react-burger-menu-btn');

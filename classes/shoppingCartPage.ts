@@ -14,7 +14,8 @@ export class ShoppingCartPage extends Base {
 
 
     constructor(page: Page){
-        super(page)
+        super(page);
+        this.url = this.url + 'cart.html';
         this.buttonShoppingCart = page.locator('a.shopping_cart_link');
         this.counterShoppingCartTotal = page.locator('span.shopping_cart_badge');
         this.buttonRemoveFromCartBackpack = page.locator('button#remove-sauce-labs-backpack');

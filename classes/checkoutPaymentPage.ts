@@ -2,7 +2,6 @@ import { Page, Locator} from 'playwright';
 import { Base } from './base';
 
 export class CheckoutPaymentPage extends Base {
-    public : Locator;
     public wrapperPaymentSummary: Locator;
     public textItemCost: Locator;
     public textItemTax: Locator;
@@ -13,6 +12,7 @@ export class CheckoutPaymentPage extends Base {
 
     constructor(page: Page){
         super(page)
+        this.url = this.url + 'checkout-step-two.html';
         this.wrapperPaymentSummary = page.locator('div.checkout_summary_container');
         this.textItemCost = this.wrapperPaymentSummary.locator('div.summary_subtotal_label');
         this.textItemTax = this.wrapperPaymentSummary.locator('div.summary_tax_label');
