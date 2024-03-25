@@ -59,7 +59,11 @@ test.describe('Pages contain all expected elements', () => {
     expect(shoppingCartPage.buttonFilter).toBeHidden()
 
     // verify unique page contents
+    expect(shoppingCartPage.buttonShoppingCart).toBeEnabled()
     expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    expect(shoppingCartPage.buttonInventoryItemTitle).toBeVisible()
+    expect(shoppingCartPage.textInventoryItemPrice).toBeVisible()
+    expect(shoppingCartPage.textInventoryItemDescription).toBeVisible()
     expect(shoppingCartPage.buttonContinueShopping).toBeEnabled()
     expect(shoppingCartPage.buttonCheckout).toBeEnabled()
 
