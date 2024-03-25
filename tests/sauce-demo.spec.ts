@@ -82,19 +82,18 @@ test.describe('Pages contain all expected elements', () => {
     // verify header, filter and menu
     expect(checkoutInformationPage.textLogo).toBeVisible()
     expect(checkoutInformationPage.textLogo).toHaveText('Swag Labs')
-    expect(checkoutInformationPage.textPageTitle).toHaveText('Products')
+    expect(checkoutInformationPage.textPageTitle).toHaveText('Checkout: Your Information')
     expect(checkoutInformationPage.buttonBurgerMenu).toBeEnabled()
     expect(checkoutInformationPage.buttonFilter).toBeHidden()
 
     // verify unique page contents
-
     expect(checkoutInformationPage.textboxFirstName).toBeEnabled()
     expect(checkoutInformationPage.textboxLastName).toBeEnabled()
     expect(checkoutInformationPage.textboxPostCode).toBeEnabled()
     expect(checkoutInformationPage.buttonCancel).toBeEnabled()
     expect(checkoutInformationPage.buttonContinue).toBeEnabled()
     expect(checkoutInformationPage.errorMessage).toBeHidden()
-    // other buttons found in base class, e.g. burger menu, shopping total icon, logo
+    
     // verify footer contents
     expect(checkoutInformationPage.buttonTwitterIcon).toBeVisible()
     expect(checkoutInformationPage.buttonFacebookIcon).toBeVisible()
