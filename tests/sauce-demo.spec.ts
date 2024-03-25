@@ -135,7 +135,7 @@ test.describe('Pages contain all expected elements', () => {
     // verify header, filter and menu
     expect(paymentConfirmationPage.textLogo).toBeVisible()
     expect(paymentConfirmationPage.textLogo).toHaveText('Swag Labs')
-    expect(paymentConfirmationPage.textPageTitle).toHaveText('Products')
+    expect(paymentConfirmationPage.textPageTitle).toHaveText('Checkout: Complete!')
     expect(paymentConfirmationPage.buttonBurgerMenu).toBeEnabled()
     expect(paymentConfirmationPage.buttonFilter).toBeEnabled()
 
