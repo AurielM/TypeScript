@@ -30,8 +30,14 @@ test.describe('Pages contain all expected elements', () => {
     expect(landingPage.buttonFilter).toBeEnabled()
 
     // verify unique page contents
+    expect(landingPage.buttonShoppingCart).toBeEnabled()
     expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
-    // check images, titles, descriptions, add to cart buttons
+    expect(landingPage.buttonInventoryItemName).toHaveCount(6)
+    expect(landingPage.textInventoryItemPrice).toHaveCount(6)
+    expect(landingPage.textInventoryItemPrice).toHaveText('Add to cart')
+    expect(landingPage.textInventoryItemDescription).toHaveCount(6)
+    expect(landingPage.buttonAddToCart).toHaveCount(6)
+    expect(landingPage.buttonRemoveFromCart).toBeHidden()
 
     // verify footer contents
     expect(landingPage.buttonTwitterIcon).toBeVisible()

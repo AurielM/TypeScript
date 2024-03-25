@@ -8,8 +8,8 @@ export class LandingPage extends Base {
     public imageInventoryItem: Locator;
     public textInventoryItemPrice: Locator;
     public textInventoryItemDescription: Locator;
-    public buttonAddToCartBackpack: Locator;
-    public buttonRemoveFromCartBackpack: Locator;
+    public buttonAddToCart: Locator;
+    public buttonRemoveFromCart: Locator;
 
 
     constructor(page: Page){
@@ -20,8 +20,8 @@ export class LandingPage extends Base {
         this.imageInventoryItem = this.wrapperInventoryList.locator('img.inventory_item_img');
         this.textInventoryItemPrice = this.wrapperInventoryList.locator('div.inventory_item_price');
         this.textInventoryItemDescription = this.wrapperInventoryList.locator('div.inventory_item_desc');
-        this.buttonAddToCartBackpack = page.locator('button#add-to-cart-sauce-labs-backpack');
-        this.buttonRemoveFromCartBackpack = page.locator('button#remove-sauce-labs-backpack');
+        this.buttonAddToCart = page.locator('button.button.btn.btn_primary.btn_small.btn_inventory');
+        this.buttonRemoveFromCart = page.locator('button.btn.btn_secondary.btn_small.btn_inventory');
     }
 }
 
