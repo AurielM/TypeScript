@@ -93,7 +93,7 @@ test.describe('Pages contain all expected elements', () => {
     expect(checkoutInformationPage.buttonCancel).toBeEnabled()
     expect(checkoutInformationPage.buttonContinue).toBeEnabled()
     expect(checkoutInformationPage.errorMessage).toBeHidden()
-    
+
     // verify footer contents
     expect(checkoutInformationPage.buttonTwitterIcon).toBeVisible()
     expect(checkoutInformationPage.buttonFacebookIcon).toBeVisible()
@@ -114,13 +114,12 @@ test.describe('Pages contain all expected elements', () => {
     expect(checkoutPaymentPage.buttonFilter).toBeEnabled()
 
     // verify unique page contents
-
     expect(checkoutPaymentPage.textItemCost).toBeVisible()
     expect(checkoutPaymentPage.textItemTax).toBeVisible()
     expect(checkoutPaymentPage.textTotalPayment).toBeVisible()
     expect(checkoutPaymentPage.buttonCancel).toBeEnabled()
     expect(checkoutPaymentPage.buttonFinish).toBeEnabled()
-    // other buttons found in base class, e.g. burger menu, shopping total icon, logo
+  
     // verify footer contents
     expect(checkoutPaymentPage.buttonTwitterIcon).toBeVisible()
     expect(checkoutPaymentPage.buttonFacebookIcon).toBeVisible()
