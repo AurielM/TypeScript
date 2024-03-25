@@ -109,7 +109,7 @@ test.describe('Pages contain all expected elements', () => {
     // verify header, filter and menu
     expect(checkoutPaymentPage.textLogo).toBeVisible()
     expect(checkoutPaymentPage.textLogo).toHaveText('Swag Labs')
-    expect(checkoutPaymentPage.textPageTitle).toHaveText('Products')
+    expect(checkoutPaymentPage.textPageTitle).toHaveText('Checkout: Overview')
     expect(checkoutPaymentPage.buttonBurgerMenu).toBeEnabled()
     expect(checkoutPaymentPage.buttonFilter).toBeEnabled()
 
@@ -140,12 +140,11 @@ test.describe('Pages contain all expected elements', () => {
     expect(paymentConfirmationPage.buttonFilter).toBeEnabled()
 
     // verify unique page contents
-
     expect(paymentConfirmationPage.imgTickForOrderComplete).toBeVisible()
     expect(paymentConfirmationPage.textThanksForYourOrder).toBeVisible()
     expect(paymentConfirmationPage.textOrderDispatched).toBeVisible()
     expect(paymentConfirmationPage.buttonBackHome).toBeEnabled()
-    // other buttons found in base class, e.g. burger menu, shopping total icon, logo
+
     // verify footer contents
     expect(paymentConfirmationPage.buttonTwitterIcon).toBeVisible()
     expect(paymentConfirmationPage.buttonFacebookIcon).toBeVisible()
