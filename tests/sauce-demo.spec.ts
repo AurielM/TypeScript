@@ -168,7 +168,7 @@ test.describe('Shopping cart accumulation', () => {
     await inventoryItemPage.buttonAddToCart.click()
     expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
 
-    // check shoppingcart page for relevant items in cart
+    // check shoppingcart page for relevant items in cart (title, price, description)
     await shoppingCartPage.buttonShoppingCart.click()
     expect(shoppingCartPage.buttonRemoveFromCartBackpack).toHaveCount(1)
     expect(shoppingCartPage.buttonInventoryItemTitle).toHaveCount(2)
