@@ -164,9 +164,9 @@ test.describe('Shopping cart accumulation', () => {
     expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
 
     // Creating inventory item variables of first item added to shopping cart for later comparison
-    const first_item = await inventoryItemPage.textInventoryItemName.nth(1).textContent()
-    const first_price = await inventoryItemPage.textInventoryItemPrice.nth(1).textContent()
-    const first_description = await inventoryItemPage.textInventoryItemDescription.nth(1).textContent()
+    const first_item = await landingPage.buttonInventoryItemName.nth(1).textContent()
+    const first_price = await landingPage.textInventoryItemPrice.nth(1).textContent()
+    const first_description = await landingPage.textInventoryItemDescription.nth(1).textContent()
 
     // add item from inventory item page and check shopping cart total icon
     await landingPage.buttonInventoryItemName.nth(1).click()
@@ -174,13 +174,13 @@ test.describe('Shopping cart accumulation', () => {
     expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
 
     // Creating inventory item variables of second item added to shopping cart for later comparison
-    const second_item = await landingPage.buttonInventoryItemName.nth(1).textContent()
-    const second_price = await landingPage.textInventoryItemPrice.nth(1).textContent()
-    const second_description = await landingPage.textInventoryItemDescription.nth(1).textContent()
+    const second_item = await inventoryItemPage.textInventoryItemName.textContent()
+    const second_price = await inventoryItemPage.textInventoryItemPrice.textContent()
+    const second_description = await inventoryItemPage.textInventoryItemDescription.textContent()
 
     // check shoppingcart page for relevant items in cart
     await shoppingCartPage.buttonShoppingCart.click()
-    expect(shoppingCartPage.buttonRemoveFromCartBackpack).toHaveCount(1)
+    expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(1)
     expect(shoppingCartPage.buttonInventoryItemTitle).toHaveCount(2)
 
     // checking variable values of first item in shopping cart

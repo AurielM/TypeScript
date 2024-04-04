@@ -4,7 +4,7 @@ import { Base } from './base';
 export class ShoppingCartPage extends Base {
     public buttonShoppingCart: Locator;
     public counterShoppingCartTotal: Locator;
-    public buttonRemoveFromCartBackpack: Locator;
+    public buttonRemoveFromCart: Locator;
     public wrapperInventoryItem: Locator;
     public buttonInventoryItemTitle: Locator;
     public textInventoryItemPrice: Locator;
@@ -18,7 +18,7 @@ export class ShoppingCartPage extends Base {
         this.url = this.url + 'cart.html';
         this.buttonShoppingCart = page.locator('a.shopping_cart_link');
         this.counterShoppingCartTotal = page.locator('span.shopping_cart_badge');
-        this.buttonRemoveFromCartBackpack = page.locator('button.btn.btn_secondary.btn_small.cart_button');
+        this.buttonRemoveFromCart = page.locator('button.btn.btn_secondary.btn_small.cart_button');
         this.wrapperInventoryItem = page.locator('div.cart_item');
         this.buttonInventoryItemTitle = this.wrapperInventoryItem.locator('div.inventory_item_name'); 
         this.textInventoryItemPrice = this.wrapperInventoryItem.locator('div.inventory_item_price');
