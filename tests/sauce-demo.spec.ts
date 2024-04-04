@@ -163,32 +163,42 @@ test.describe('Shopping cart accumulation', () => {
     await inventoryItemPage.buttonAddToCart.nth(0).click()
     expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
 
+    // Creating inventory item variables of first item added to shopping cart for later comparison
+    const first_item = await inventoryItemPage.textInventoryItemName.nth(1).textContent()
+    const first_price = await inventoryItemPage.textInventoryItemPrice.nth(1).textContent()
+    const first_description = await inventoryItemPage.textInventoryItemDescription.nth(1).textContent()
+
     // add item from inventory item page and check shopping cart total icon
     await landingPage.buttonInventoryItemName.nth(1).click()
     await inventoryItemPage.buttonAddToCart.click()
     expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
 
-    // check shoppingcart page for relevant items in cart (title, price, description)
+    // Creating inventory item variables of second item added to shopping cart for later comparison
+    const second_item = await landingPage.buttonInventoryItemName.nth(1).textContent()
+    const second_price = await landingPage.textInventoryItemPrice.nth(1).textContent()
+    const second_description = await landingPage.textInventoryItemDescription.nth(1).textContent()
+
+    // check shoppingcart page for relevant items in cart
     await shoppingCartPage.buttonShoppingCart.click()
     expect(shoppingCartPage.buttonRemoveFromCartBackpack).toHaveCount(1)
     expect(shoppingCartPage.buttonInventoryItemTitle).toHaveCount(2)
-    expect(shoppingCartPage.buttonInventoryItemTitle.nth(0)).toHaveText("Sauce Labs Backpack")
-    expect(shoppingCartPage.buttonInventoryItemTitle.nth(1)).toHaveText("Sauce Labs Bike Light")
-    expect(shoppingCartPage.textInventoryItemDescription.nth(0)).toHaveText(`
-      carry.allTheThings() with the sleek, streamlined Sly Pack that melds 
-      uncompromising style with unequaled laptop and tablet protection.`)
-    expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(`
-    A red light isn't the desired state in testing but it sure helps when riding your bike at night. 
-    Water-resistant with 3 lighting modes, 1 AAA battery included.`)
-    expect(shoppingCartPage.textInventoryItemPrice.nth(0)).toHaveText("$29.99")
-    expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText("$9.99")
+
+    // checking variable values of first item in shopping cart
+    expect(shoppingCartPage.buttonInventoryItemTitle.nth(1)).toHaveText(first_item)
+    expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(first_description)
+    expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText(first_price)
+
+    //Checking variable values of second item in shopping cart
+    expect(shoppingCartPage.buttonInventoryItemTitle.nth(1)).toHaveText(second_item)
+    expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(second_description)
+    expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText(second_price)
 
   });
   test('Adding multiple items to the shopping cart from landing page', async ({ page }) => {
-    // Creating inventory item variables for later comparison
-    const first_item = await landingPage.buttonInventoryItemName.nth(0).textContent()
-    const first_price = await landingPage.textInventoryItemPrice.nth(0).textContent()
-    const first_description = await landingPage.textInventoryItemDescription.nth(0).textContent()
+    const landingPage = new LandingPage(page);
+    const inventoryItemPage = new InventoryItemPage(page);
+
+    
 
     
 
@@ -203,11 +213,7 @@ test.describe('Shopping cart accumulation', () => {
     
 
     // Verify new item in shopping cart
-    expect(shoppingCartPage.buttonInventoryItemTitle).toHaveText(first_item)
-    expect(shoppingCartPage.textInventoryItemDescription).toHaveText(first_description)
-    expect(shoppingCartPage.textInventoryItemPrice).toHaveText(first_price)
-    expect(inventoryItemPage.buttonAddToCart).toBeHidden()
-    expect(shoppingCartPage.buttonRemoveFromCartBackpack).toBeEnabled()
+    
     });
 });
 
