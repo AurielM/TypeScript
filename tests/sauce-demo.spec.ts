@@ -153,7 +153,7 @@ test.describe('Pages contain all expected elements', () => {
   });
 
 test.describe('Shopping cart accumulation', () => {
-  test('Adding an item should update the Shopping cart', async ({ page }) => {
+  test('Adding an item should update the Shopping cart (from landing page and inventory item page)', async ({ page }) => {
     const landingPage = new LandingPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
     const inventoryItemPage = new InventoryItemPage(page);
@@ -184,7 +184,7 @@ test.describe('Shopping cart accumulation', () => {
     expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText("$9.99")
 
   });
-  test('Second test here', async ({ page }) => {
+  test('Adding multiple items to the shopping cart from landing page', async ({ page }) => {
     // Creating inventory item variables for later comparison
     const first_item = await landingPage.buttonInventoryItemName.nth(0).textContent()
     const first_price = await landingPage.textInventoryItemPrice.nth(0).textContent()
