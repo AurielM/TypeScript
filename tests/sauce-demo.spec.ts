@@ -152,22 +152,25 @@ test.describe('Pages contain all expected elements', () => {
     });
   });
 
-test.describe('Landing/Inventory page behaviour', () => {
-  test('Adding item should update shoppping cart total icon', async ({ page }) => {
+test.describe('Shopping cart accumulation', () => {
+  test('Adding an item should update the Shopping cart', async ({ page }) => {
     const landingPage = new LandingPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
     const inventoryItemPage = new InventoryItemPage(page);
 
-
-
-
-    // add item from landing/inventory page
-
-    // add item from inventory item page
-    await landingPage.buttonInventoryItemName.nth(0).click()
-
+    // add item from landing/inventory page and check shopping cart total icon
     expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    await inventoryItemPage.buttonAddToCart.nth(0).click()
+    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
+
+    // add item from inventory item page and check shopping cart total icon
+    await landingPage.buttonInventoryItemName.nth(1).click()
     await inventoryItemPage.buttonAddToCart.click()
+    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
+
+    // check shoppingcart page for relevant items in cart
+    await shoppingCartPage.buttonShoppingCart.click()
+    expect()
 
     // Creating inventory item variables for later comparison
     const first_item = await landingPage.buttonInventoryItemName.nth(0).textContent()
