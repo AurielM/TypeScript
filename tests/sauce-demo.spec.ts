@@ -180,7 +180,7 @@ test.describe('Shopping cart accumulation', () => {
 
     // check shoppingcart page for relevant items in cart
     await shoppingCartPage.buttonShoppingCart.click()
-    expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(1)
+    expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(2)
     expect(shoppingCartPage.buttonInventoryItemTitle).toHaveCount(2)
 
     // checking variable values of first item in shopping cart
