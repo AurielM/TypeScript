@@ -170,8 +170,21 @@ test.describe('Shopping cart accumulation', () => {
 
     // check shoppingcart page for relevant items in cart
     await shoppingCartPage.buttonShoppingCart.click()
-    expect()
+    expect(shoppingCartPage.buttonRemoveFromCartBackpack).toHaveCount(1)
+    expect(shoppingCartPage.buttonInventoryItemTitle).toHaveCount(2)
+    expect(shoppingCartPage.buttonInventoryItemTitle.nth(0)).toHaveText("Sauce Labs Backpack")
+    expect(shoppingCartPage.buttonInventoryItemTitle.nth(1)).toHaveText("Sauce Labs Bike Light")
+    expect(shoppingCartPage.textInventoryItemDescription.nth(0)).toHaveText(`
+      carry.allTheThings() with the sleek, streamlined Sly Pack that melds 
+      uncompromising style with unequaled laptop and tablet protection.`)
+    expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(`
+    A red light isn't the desired state in testing but it sure helps when riding your bike at night. 
+    Water-resistant with 3 lighting modes, 1 AAA battery included.`)
+    expect(shoppingCartPage.textInventoryItemPrice.nth(0)).toHaveText("$29.99")
+    expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText("$9.99")
 
+  });
+  test('Second test here', async ({ page }) => {
     // Creating inventory item variables for later comparison
     const first_item = await landingPage.buttonInventoryItemName.nth(0).textContent()
     const first_price = await landingPage.textInventoryItemPrice.nth(0).textContent()
