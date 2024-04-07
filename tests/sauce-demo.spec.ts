@@ -197,9 +197,16 @@ test.describe('Shopping cart accumulation', () => {
   test('Adding multiple items to the shopping cart from landing page', async ({ page }) => {
     const landingPage = new LandingPage(page);
     const inventoryItemPage = new InventoryItemPage(page);
+    const shoppingCartPage = new ShoppingCartPage(page);
 
-    
-
+    // add 3 items from landing/inventory page and check shopping cart total icon
+    expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    await inventoryItemPage.buttonAddToCart.nth(0).click()
+    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
+    await inventoryItemPage.buttonAddToCart.nth(1).click()
+    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
+    await inventoryItemPage.buttonAddToCart.nth(2).click()
+    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("3")
     
 
     // Verifying expected item present
