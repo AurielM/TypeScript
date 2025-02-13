@@ -203,28 +203,29 @@ test.describe('Shopping cart accumulation', () => {
     const shoppingCartPage = new ShoppingCartPage(page);
 
     // Creating inventory item variables of first item added to shopping cart for later comparison
-    const first_item = await landingPage.buttonInventoryItemName.nth(1).textContent() ?? "Null text"
-    const first_price = await landingPage.textInventoryItemPrice.nth(1).textContent() ?? "Null text"
-    const first_description = await landingPage.textInventoryItemDescription.nth(1).textContent() ?? "Null text"
+    const first_item = await landingPage.buttonInventoryItemName.nth(0).textContent() ?? "Null text"
+    const first_price = await landingPage.textInventoryItemPrice.nth(0).textContent() ?? "Null text"
+    const first_description = await landingPage.textInventoryItemDescription.nth(0).textContent() ?? "Null text"
 
-    // Creating inventory item variables of first item added to shopping cart for later comparison
-    const second_item = await landingPage.buttonInventoryItemName.nth(2).textContent() ?? "Null text"
-    const second_price = await landingPage.textInventoryItemPrice.nth(2).textContent() ?? "Null text"
-    const second_description = await landingPage.textInventoryItemDescription.nth(2).textContent() ?? "Null text"
+    // Creating inventory item variables of second item added to shopping cart for later comparison
+    const second_item = await landingPage.buttonInventoryItemName.nth(1).textContent() ?? "Null text"
+    const second_price = await landingPage.textInventoryItemPrice.nth(1).textContent() ?? "Null text"
+    const second_description = await landingPage.textInventoryItemDescription.nth(1).textContent() ?? "Null text"
 
-    // Creating inventory item variables of first item added to shopping cart for later comparison
+    // Creating inventory item variables of third item added to shopping cart for later comparison
     const third_item = await landingPage.buttonInventoryItemName.nth(2).textContent() ?? "Null text"
     const third_price = await landingPage.textInventoryItemPrice.nth(2).textContent() ?? "Null text"
     const third_description = await landingPage.textInventoryItemDescription.nth(2).textContent() ?? "Null text"
 
 
     // add 3 items from landing/inventory page and check shopping cart total icon
+    // locators reset once names of buttons change following being clicked, thus nth must be 0 on all counts
     await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
     await inventoryItemPage.buttonAddToCart.nth(0).click()
     await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
-    await inventoryItemPage.buttonAddToCart.nth(1).click()
+    await inventoryItemPage.buttonAddToCart.nth(0).click()
     await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
-    await inventoryItemPage.buttonAddToCart.nth(2).click()
+    await inventoryItemPage.buttonAddToCart.nth(0).click()
     await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("3")
     
     // check shoppingcart page for relevant items in cart
@@ -236,19 +237,18 @@ test.describe('Shopping cart accumulation', () => {
 
     // Verifying expected items present
     await expect(shoppingCartPage.buttonInventoryItemName.nth(0)).toHaveText(first_item)
-    await expect(shoppingCartPage.buttonInventoryItemPrice).toHaveText(first_price)
-    await expect(shoppingCartPage.buttonInventoryItemDescription).toHaveText(first_description)
+    await expect(shoppingCartPage.textInventoryItemPrice.nth(0)).toHaveText(first_price)
+    await expect(shoppingCartPage.textInventoryItemDescription.nth(0)).toHaveText(first_description)
 
     await expect(shoppingCartPage.buttonInventoryItemName.nth(1)).toHaveText(second_item)
-    await expect(shoppingCartPage.buttonInventoryItemPrice).toHaveText(second_price)
-    await expect(shoppingCartPage.buttonInventoryItemDescription).toHaveText(second_description)
+    await expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText(second_price)
+    await expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(second_description)
 
     await expect(shoppingCartPage.buttonInventoryItemName.nth(2)).toHaveText(third_item)
-    await expect(shoppingCartPage.buttonInventoryItemPrice).toHaveText(third_price)
-    await expect(shoppingCartPage.buttonInventoryItemDescription).toHaveText(third_description)
+    await expect(shoppingCartPage.textInventoryItemPrice.nth(2)).toHaveText(third_price)
+    await expect(shoppingCartPage.textInventoryItemDescription.nth(2)).toHaveText(third_description)
 
-
-    await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(3)
+    await expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(3)
 
 
     

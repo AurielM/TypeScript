@@ -23,8 +23,8 @@ export class InventoryItemPage extends Base {
         this.imageInventoryItem = page.locator('img.inventory_details_img');
         this.textInventoryItemPrice = page.locator('div.inventory_details_price');
         this.textInventoryItemDescription = page.locator('div.inventory_details_desc.large_size');
-        this.buttonAddToCart = page.locator('button.btn.btn_primary.btn_small.btn_inventory');
-        this.buttonRemoveFromCart = page.locator('button.btn.btn_secondary.btn_small.btn_inventory');
+        this.buttonAddToCart = page.locator('div[data-test="inventory-item"] button.btn.btn_primary.btn_small.btn_inventory');
+        this.buttonRemoveFromCart = page.locator('div[data-test="inventory-item"] button.btn.btn_secondary.btn_small.btn_inventory');
     }
 }
 
