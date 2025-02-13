@@ -43,7 +43,7 @@ test.describe('Pages contain all expected elements', () => {
     expect(landingPage.buttonFacebookIcon).toBeVisible()
     expect(landingPage.buttonLinkedInIcon).toBeVisible()
     expect(landingPage.textCopywright).toBeVisible()
-    expect(landingPage.textCopywright).toHaveText('© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
+    expect(landingPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
   });
 
   test('Shopping cart page should contain all elements', async ({ page }) => {
@@ -71,7 +71,7 @@ test.describe('Pages contain all expected elements', () => {
     expect(shoppingCartPage.buttonFacebookIcon).toBeVisible()
     expect(shoppingCartPage.buttonLinkedInIcon).toBeVisible()
     expect(shoppingCartPage.textCopywright).toBeVisible()
-    expect(shoppingCartPage.textCopywright).toHaveText('© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
+    expect(shoppingCartPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
     });
 
   test('Checkout information page should contain all elements', async ({ page }) => {
@@ -124,7 +124,7 @@ test.describe('Pages contain all expected elements', () => {
     expect(checkoutPaymentPage.buttonFacebookIcon).toBeVisible()
     expect(checkoutPaymentPage.buttonLinkedInIcon).toBeVisible()
     expect(checkoutPaymentPage.textCopywright).toBeVisible()
-    expect(checkoutPaymentPage.textCopywright).toHaveText('© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
+    expect(checkoutPaymentPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
     });
 
   test('Payment confirmation page should contain all elements', async ({ page }) => {
