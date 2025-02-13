@@ -6,6 +6,7 @@ import { InventoryItemPage } from '../classes/inventoryItemPage';
 import { CheckoutInformationPage } from '../classes/checkoutInformationPage';
 import { CheckoutPaymentPage } from '../classes/checkoutPaymentPage';
 import { PaymentConfirmationPage } from '../classes/paymentConfirmationPage';
+import { TIMEOUT } from 'dns';
 
 test.beforeEach(async ({ page }) => {
   // Login using standard credentials and arrive at LandingPage
@@ -164,19 +165,21 @@ test.describe('Shopping cart accumulation', () => {
     expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
 
     // Creating inventory item variables of first item added to shopping cart for later comparison
-    const first_item = await landingPage.buttonInventoryItemName.nth(1).textContent()
-    const first_price = await landingPage.textInventoryItemPrice.nth(1).textContent()
-    const first_description = await landingPage.textInventoryItemDescription.nth(1).textContent()
+    const first_item = await landingPage.buttonInventoryItemName.nth(1).textContent() ?? "Null text"
+    const first_price = await landingPage.textInventoryItemPrice.nth(1).textContent() ?? "Null text"
+    const first_description = await landingPage.textInventoryItemDescription.nth(1).textContent() ?? "Null text"
 
     // add item from inventory item page and check shopping cart total icon
     await landingPage.buttonInventoryItemName.nth(1).click()
     await inventoryItemPage.buttonAddToCart.click()
     expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
+    await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('load')
 
     // Creating inventory item variables of second item added to shopping cart for later comparison
-    const second_item = await inventoryItemPage.textInventoryItemName.textContent()
-    const second_price = await inventoryItemPage.textInventoryItemPrice.textContent()
-    const second_description = await inventoryItemPage.textInventoryItemDescription.textContent()
+    const second_item = await inventoryItemPage.textInventoryItemName.textContent() ?? "Null text"
+    const second_price = await inventoryItemPage.textInventoryItemPrice.textContent() ?? "Null text"
+    const second_description = await inventoryItemPage.textInventoryItemDescription.textContent() ?? "Null text"
 
     // check shoppingcart page for relevant items in cart
     await shoppingCartPage.buttonShoppingCart.click()
