@@ -24,27 +24,27 @@ test.describe('Pages contain all expected elements', () => {
     const shoppingCartPage = new ShoppingCartPage(page);
 
     // verify header, filter and menu
-    expect(landingPage.textLogo).toBeVisible()
-    expect(landingPage.textLogo).toHaveText('Swag Labs')
-    expect(landingPage.textPageTitle).toHaveText('Products')
-    expect(landingPage.buttonBurgerMenu).toBeEnabled()
-    expect(landingPage.buttonFilter).toBeEnabled()
+    await expect(landingPage.textLogo).toBeVisible()
+    await expect(landingPage.textLogo).toHaveText('Swag Labs')
+    await expect(landingPage.textPageTitle).toHaveText('Products')
+    await expect(landingPage.buttonBurgerMenu).toBeEnabled()
+    await expect(landingPage.buttonFilter).toBeEnabled()
 
     // verify unique page contents
-    expect(landingPage.buttonShoppingCart).toBeEnabled()
-    expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
-    expect(landingPage.buttonInventoryItemName).toHaveCount(6)
-    expect(landingPage.textInventoryItemPrice).toHaveCount(6)
-    expect(landingPage.textInventoryItemDescription).toHaveCount(6)
-    expect(landingPage.buttonAddToCart).toHaveCount(6)
-    expect(landingPage.buttonRemoveFromCart).toBeHidden()
+    await expect(landingPage.buttonShoppingCart).toBeEnabled()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    await expect(landingPage.buttonInventoryItemName).toHaveCount(6)
+    await expect(landingPage.textInventoryItemPrice).toHaveCount(6)
+    await expect(landingPage.textInventoryItemDescription).toHaveCount(6)
+    await expect(landingPage.buttonAddToCart).toHaveCount(6)
+    await expect(landingPage.buttonRemoveFromCart).toBeHidden()
 
     // verify footer contents
-    expect(landingPage.buttonTwitterIcon).toBeVisible()
-    expect(landingPage.buttonFacebookIcon).toBeVisible()
-    expect(landingPage.buttonLinkedInIcon).toBeVisible()
-    expect(landingPage.textCopywright).toBeVisible()
-    expect(landingPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
+    await expect(landingPage.buttonTwitterIcon).toBeVisible()
+    await expect(landingPage.buttonFacebookIcon).toBeVisible()
+    await expect(landingPage.buttonLinkedInIcon).toBeVisible()
+    await expect(landingPage.textCopywright).toBeVisible()
+    await expect(landingPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
   });
 
   test('Shopping cart page should contain all elements', async ({ page }) => {
@@ -52,27 +52,27 @@ test.describe('Pages contain all expected elements', () => {
     await page.goto(shoppingCartPage.url);
 
     // verify header, filter and menu
-    expect(shoppingCartPage.textLogo).toBeVisible()
-    expect(shoppingCartPage.textLogo).toHaveText('Swag Labs')
-    expect(shoppingCartPage.textPageTitle).toHaveText('Your Cart')
-    expect(shoppingCartPage.buttonBurgerMenu).toBeEnabled()
-    expect(shoppingCartPage.buttonFilter).toBeHidden()
+    await expect(shoppingCartPage.textLogo).toBeVisible()
+    await expect(shoppingCartPage.textLogo).toHaveText('Swag Labs')
+    await expect(shoppingCartPage.textPageTitle).toHaveText('Your Cart')
+    await expect(shoppingCartPage.buttonBurgerMenu).toBeEnabled()
+    await expect(shoppingCartPage.buttonFilter).toBeHidden()
 
     // verify unique page contents
-    expect(shoppingCartPage.buttonShoppingCart).toBeEnabled()
-    expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
-    expect(shoppingCartPage.buttonInventoryItemTitle).toBeHidden()
-    expect(shoppingCartPage.textInventoryItemPrice).toBeHidden()
-    expect(shoppingCartPage.textInventoryItemDescription).toBeHidden()
-    expect(shoppingCartPage.buttonContinueShopping).toBeVisible()
-    expect(shoppingCartPage.buttonCheckout).toBeEnabled()
+    await expect(shoppingCartPage.buttonShoppingCart).toBeEnabled()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    await expect(shoppingCartPage.buttonInventoryItemName).toBeHidden()
+    await expect(shoppingCartPage.textInventoryItemPrice).toBeHidden()
+    await expect(shoppingCartPage.textInventoryItemDescription).toBeHidden()
+    await expect(shoppingCartPage.buttonContinueShopping).toBeVisible()
+    await expect(shoppingCartPage.buttonCheckout).toBeEnabled()
 
     // verify footer contents
-    expect(shoppingCartPage.buttonTwitterIcon).toBeVisible()
-    expect(shoppingCartPage.buttonFacebookIcon).toBeVisible()
-    expect(shoppingCartPage.buttonLinkedInIcon).toBeVisible()
-    expect(shoppingCartPage.textCopywright).toBeVisible()
-    expect(shoppingCartPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
+    await expect(shoppingCartPage.buttonTwitterIcon).toBeVisible()
+    await expect(shoppingCartPage.buttonFacebookIcon).toBeVisible()
+    await expect(shoppingCartPage.buttonLinkedInIcon).toBeVisible()
+    await expect(shoppingCartPage.textCopywright).toBeVisible()
+    await expect(shoppingCartPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
     });
 
   test('Checkout information page should contain all elements', async ({ page }) => {
@@ -81,26 +81,26 @@ test.describe('Pages contain all expected elements', () => {
     await page.goto(checkoutInformationPage.url);
     
     // verify header, filter and menu
-    expect(checkoutInformationPage.textLogo).toBeVisible()
-    expect(checkoutInformationPage.textLogo).toHaveText('Swag Labs')
-    expect(checkoutInformationPage.textPageTitle).toHaveText('Checkout: Your Information')
-    expect(checkoutInformationPage.buttonBurgerMenu).toBeEnabled()
-    expect(checkoutInformationPage.buttonFilter).toBeHidden()
+    await expect(checkoutInformationPage.textLogo).toBeVisible()
+    await expect(checkoutInformationPage.textLogo).toHaveText('Swag Labs')
+    await expect(checkoutInformationPage.textPageTitle).toHaveText('Checkout: Your Information')
+    await expect(checkoutInformationPage.buttonBurgerMenu).toBeEnabled()
+    await expect(checkoutInformationPage.buttonFilter).toBeHidden()
 
     // verify unique page contents
-    expect(checkoutInformationPage.textboxFirstName).toBeEnabled()
-    expect(checkoutInformationPage.textboxLastName).toBeEnabled()
-    expect(checkoutInformationPage.textboxPostCode).toBeEnabled()
-    expect(checkoutInformationPage.buttonCancel).toBeEnabled()
-    expect(checkoutInformationPage.buttonContinue).toBeEnabled()
-    expect(checkoutInformationPage.errorMessage).toBeHidden()
+    await expect(checkoutInformationPage.textboxFirstName).toBeEnabled()
+    await expect(checkoutInformationPage.textboxLastName).toBeEnabled()
+    await expect(checkoutInformationPage.textboxPostCode).toBeEnabled()
+    await expect(checkoutInformationPage.buttonCancel).toBeEnabled()
+    await expect(checkoutInformationPage.buttonContinue).toBeEnabled()
+    await expect(checkoutInformationPage.errorMessage).toBeHidden()
 
     // verify footer contents
-    expect(checkoutInformationPage.buttonTwitterIcon).toBeVisible()
-    expect(checkoutInformationPage.buttonFacebookIcon).toBeVisible()
-    expect(checkoutInformationPage.buttonLinkedInIcon).toBeVisible()
-    expect(checkoutInformationPage.textCopywright).toBeVisible()
-    expect(checkoutInformationPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
+    await expect(checkoutInformationPage.buttonTwitterIcon).toBeVisible()
+    await expect(checkoutInformationPage.buttonFacebookIcon).toBeVisible()
+    await expect(checkoutInformationPage.buttonLinkedInIcon).toBeVisible()
+    await expect(checkoutInformationPage.textCopywright).toBeVisible()
+    await expect(checkoutInformationPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
     });   
 
   test('Checkout payment page should contain all elements', async ({ page }) => {
@@ -108,24 +108,24 @@ test.describe('Pages contain all expected elements', () => {
     await page.goto(checkoutPaymentPage.url)
     
     // verify header, filter and menu
-    expect(checkoutPaymentPage.textLogo).toBeVisible()
-    expect(checkoutPaymentPage.textLogo).toHaveText('Swag Labs')
-    expect(checkoutPaymentPage.textPageTitle).toHaveText('Checkout: Overview')
-    expect(checkoutPaymentPage.buttonBurgerMenu).toBeEnabled()
+    await expect(checkoutPaymentPage.textLogo).toBeVisible()
+    await expect(checkoutPaymentPage.textLogo).toHaveText('Swag Labs')
+    await expect(checkoutPaymentPage.textPageTitle).toHaveText('Checkout: Overview')
+    await expect(checkoutPaymentPage.buttonBurgerMenu).toBeEnabled()
 
     // verify unique page contents
-    expect(checkoutPaymentPage.textItemCost).toBeVisible()
-    expect(checkoutPaymentPage.textItemTax).toBeVisible()
-    expect(checkoutPaymentPage.textPriceTotal).toBeVisible()
-    expect(checkoutPaymentPage.buttonCancel).toBeEnabled()
-    expect(checkoutPaymentPage.buttonFinish).toBeEnabled()
+    await expect(checkoutPaymentPage.textItemCost).toBeVisible()
+    await expect(checkoutPaymentPage.textItemTax).toBeVisible()
+    await expect(checkoutPaymentPage.textPriceTotal).toBeVisible()
+    await expect(checkoutPaymentPage.buttonCancel).toBeEnabled()
+    await expect(checkoutPaymentPage.buttonFinish).toBeEnabled()
   
     // verify footer contents
-    expect(checkoutPaymentPage.buttonTwitterIcon).toBeVisible()
-    expect(checkoutPaymentPage.buttonFacebookIcon).toBeVisible()
-    expect(checkoutPaymentPage.buttonLinkedInIcon).toBeVisible()
-    expect(checkoutPaymentPage.textCopywright).toBeVisible()
-    expect(checkoutPaymentPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
+    await expect(checkoutPaymentPage.buttonTwitterIcon).toBeVisible()
+    await expect(checkoutPaymentPage.buttonFacebookIcon).toBeVisible()
+    await expect(checkoutPaymentPage.buttonLinkedInIcon).toBeVisible()
+    await expect(checkoutPaymentPage.textCopywright).toBeVisible()
+    await expect(checkoutPaymentPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
     });
 
   test('Payment confirmation page should contain all elements', async ({ page }) => {
@@ -133,23 +133,23 @@ test.describe('Pages contain all expected elements', () => {
     await page.goto(paymentConfirmationPage.url)
     
     // verify header, filter and menu
-    expect(paymentConfirmationPage.textLogo).toBeVisible()
-    expect(paymentConfirmationPage.textLogo).toHaveText('Swag Labs')
-    expect(paymentConfirmationPage.textPageTitle).toHaveText('Checkout: Complete!')
-    expect(paymentConfirmationPage.buttonBurgerMenu).toBeEnabled()
+    await expect(paymentConfirmationPage.textLogo).toBeVisible()
+    await expect(paymentConfirmationPage.textLogo).toHaveText('Swag Labs')
+    await expect(paymentConfirmationPage.textPageTitle).toHaveText('Checkout: Complete!')
+    await expect(paymentConfirmationPage.buttonBurgerMenu).toBeEnabled()
 
     // verify unique page contents
-    expect(paymentConfirmationPage.imgTickForOrderComplete).toBeVisible()
-    expect(paymentConfirmationPage.textThanksForYourOrder).toBeVisible()
-    expect(paymentConfirmationPage.textOrderDispatched).toBeVisible()
-    expect(paymentConfirmationPage.buttonBackHome).toBeEnabled()
+    await expect(paymentConfirmationPage.imgTickForOrderComplete).toBeVisible()
+    await expect(paymentConfirmationPage.textThanksForYourOrder).toBeVisible()
+    await expect(paymentConfirmationPage.textOrderDispatched).toBeVisible()
+    await expect(paymentConfirmationPage.buttonBackHome).toBeEnabled()
 
     // verify footer contents
-    expect(paymentConfirmationPage.buttonTwitterIcon).toBeVisible()
-    expect(paymentConfirmationPage.buttonFacebookIcon).toBeVisible()
-    expect(paymentConfirmationPage.buttonLinkedInIcon).toBeVisible()
-    expect(paymentConfirmationPage.textCopywright).toBeVisible()
-    expect(paymentConfirmationPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
+    await expect(paymentConfirmationPage.buttonTwitterIcon).toBeVisible()
+    await expect(paymentConfirmationPage.buttonFacebookIcon).toBeVisible()
+    await expect(paymentConfirmationPage.buttonLinkedInIcon).toBeVisible()
+    await expect(paymentConfirmationPage.textCopywright).toBeVisible()
+    await expect(paymentConfirmationPage.textCopywright).toHaveText('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
     });
   });
 
@@ -160,9 +160,9 @@ test.describe('Shopping cart accumulation', () => {
     const inventoryItemPage = new InventoryItemPage(page);
 
     // add item from landing/inventory page and check shopping cart total icon
-    expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
     await inventoryItemPage.buttonAddToCart.nth(0).click()
-    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
+    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
 
     // Creating inventory item variables of first item added to shopping cart for later comparison
     const first_item = await landingPage.buttonInventoryItemName.nth(1).textContent() ?? "Null text"
@@ -172,7 +172,7 @@ test.describe('Shopping cart accumulation', () => {
     // add item from inventory item page and check shopping cart total icon
     await landingPage.buttonInventoryItemName.nth(1).click()
     await inventoryItemPage.buttonAddToCart.click()
-    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
+    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
     await page.waitForLoadState('networkidle')
     await page.waitForLoadState('load')
 
@@ -183,18 +183,18 @@ test.describe('Shopping cart accumulation', () => {
 
     // check shoppingcart page for relevant items in cart
     await shoppingCartPage.buttonShoppingCart.click()
-    expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(2)
-    expect(shoppingCartPage.buttonInventoryItemTitle).toHaveCount(2)
+    await expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(2)
+    await expect(shoppingCartPage.buttonInventoryItemName).toHaveCount(2)
 
     // checking variable values of first item in shopping cart
-    expect(shoppingCartPage.buttonInventoryItemTitle.nth(1)).toHaveText(first_item)
-    expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(first_description)
-    expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText(first_price)
+    await expect(shoppingCartPage.buttonInventoryItemName.nth(1)).toHaveText(first_item)
+    await expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(first_description)
+    await expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText(first_price)
 
     //Checking variable values of second item in shopping cart
-    expect(shoppingCartPage.buttonInventoryItemTitle.nth(1)).toHaveText(second_item)
-    expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(second_description)
-    expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText(second_price)
+    await expect(shoppingCartPage.buttonInventoryItemName.nth(1)).toHaveText(second_item)
+    await expect(shoppingCartPage.textInventoryItemDescription.nth(1)).toHaveText(second_description)
+    await expect(shoppingCartPage.textInventoryItemPrice.nth(1)).toHaveText(second_price)
 
   });
   test('Adding multiple items to the shopping cart from landing page', async ({ page }) => {
@@ -202,20 +202,55 @@ test.describe('Shopping cart accumulation', () => {
     const inventoryItemPage = new InventoryItemPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
 
-    // add 3 items from landing/inventory page and check shopping cart total icon
-    expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
-    await inventoryItemPage.buttonAddToCart.nth(0).click()
-    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
-    await inventoryItemPage.buttonAddToCart.nth(1).click()
-    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
-    await inventoryItemPage.buttonAddToCart.nth(2).click()
-    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("3")
-    
+    // Creating inventory item variables of first item added to shopping cart for later comparison
+    const first_item = await landingPage.buttonInventoryItemName.nth(1).textContent() ?? "Null text"
+    const first_price = await landingPage.textInventoryItemPrice.nth(1).textContent() ?? "Null text"
+    const first_description = await landingPage.textInventoryItemDescription.nth(1).textContent() ?? "Null text"
 
-    // Verifying expected item present
-    expect(inventoryItemPage.textInventoryItemName).toHaveText(first_item)
-    expect(inventoryItemPage.textInventoryItemPrice).toHaveText(first_price)
-    expect(inventoryItemPage.textInventoryItemDescription).toHaveText(first_description)
+    // Creating inventory item variables of first item added to shopping cart for later comparison
+    const second_item = await landingPage.buttonInventoryItemName.nth(2).textContent() ?? "Null text"
+    const second_price = await landingPage.textInventoryItemPrice.nth(2).textContent() ?? "Null text"
+    const second_description = await landingPage.textInventoryItemDescription.nth(2).textContent() ?? "Null text"
+
+    // Creating inventory item variables of first item added to shopping cart for later comparison
+    const third_item = await landingPage.buttonInventoryItemName.nth(2).textContent() ?? "Null text"
+    const third_price = await landingPage.textInventoryItemPrice.nth(2).textContent() ?? "Null text"
+    const third_description = await landingPage.textInventoryItemDescription.nth(2).textContent() ?? "Null text"
+
+
+    // add 3 items from landing/inventory page and check shopping cart total icon
+    await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    await inventoryItemPage.buttonAddToCart.nth(0).click()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
+    await inventoryItemPage.buttonAddToCart.nth(1).click()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("2")
+    await inventoryItemPage.buttonAddToCart.nth(2).click()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("3")
+    
+    // check shoppingcart page for relevant items in cart
+    await shoppingCartPage.buttonShoppingCart.click()
+    await expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(3)
+    await expect(shoppingCartPage.buttonInventoryItemName).toHaveCount(3)
+    await expect(shoppingCartPage.buttonContinueShopping).toBeEnabled()
+    await expect(shoppingCartPage.buttonCheckout).toBeEnabled()
+
+    // Verifying expected items present
+    await expect(shoppingCartPage.buttonInventoryItemName.nth(0)).toHaveText(first_item)
+    await expect(shoppingCartPage.buttonInventoryItemPrice).toHaveText(first_price)
+    await expect(shoppingCartPage.buttonInventoryItemDescription).toHaveText(first_description)
+
+    await expect(shoppingCartPage.buttonInventoryItemName.nth(1)).toHaveText(second_item)
+    await expect(shoppingCartPage.buttonInventoryItemPrice).toHaveText(second_price)
+    await expect(shoppingCartPage.buttonInventoryItemDescription).toHaveText(second_description)
+
+    await expect(shoppingCartPage.buttonInventoryItemName.nth(2)).toHaveText(third_item)
+    await expect(shoppingCartPage.buttonInventoryItemPrice).toHaveText(third_price)
+    await expect(shoppingCartPage.buttonInventoryItemDescription).toHaveText(third_description)
+
+
+    await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(3)
+
+
     
     
     
@@ -232,20 +267,20 @@ test.describe('Inventory item page behaviour', () => {
     const inventoryItemPage = new InventoryItemPage(page);
 
     // Verify button changes when adding/removing item from shopping cart
-    expect(inventoryItemPage.buttonAddToCart).toBeHidden()
-    expect(inventoryItemPage.buttonRemoveFromCart).toBeEnabled()
-    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
+    await expect(inventoryItemPage.buttonAddToCart).toBeHidden()
+    await expect(inventoryItemPage.buttonRemoveFromCart).toBeEnabled()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
 
     await inventoryItemPage.buttonRemoveFromCart.click()
 
-    expect(inventoryItemPage.buttonAddToCart).toBeEnabled
-    expect(inventoryItemPage.buttonRemoveFromCart).toBeHidden()
-    expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+    await expect(inventoryItemPage.buttonAddToCart).toBeEnabled
+    await expect(inventoryItemPage.buttonRemoveFromCart).toBeHidden()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
 
     await inventoryItemPage.buttonAddToCart.click()
 
-    expect(inventoryItemPage.buttonAddToCart).toBeHidden()
-    expect(inventoryItemPage.buttonRemoveFromCart).toBeEnabled()
-    expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
+    await expect(inventoryItemPage.buttonAddToCart).toBeHidden()
+    await expect(inventoryItemPage.buttonRemoveFromCart).toBeEnabled()
+    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
   });
 });
