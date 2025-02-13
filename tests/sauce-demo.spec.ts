@@ -115,7 +115,7 @@ test.describe('Pages contain all expected elements', () => {
     // verify unique page contents
     expect(checkoutPaymentPage.textItemCost).toBeVisible()
     expect(checkoutPaymentPage.textItemTax).toBeVisible()
-    expect(checkoutPaymentPage.textTotalPayment).toBeVisible()
+    expect(checkoutPaymentPage.textPriceTotal).toBeVisible()
     expect(checkoutPaymentPage.buttonCancel).toBeEnabled()
     expect(checkoutPaymentPage.buttonFinish).toBeEnabled()
   
