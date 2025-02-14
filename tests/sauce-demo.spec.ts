@@ -217,7 +217,6 @@ test.describe('Shopping cart accumulation', () => {
     const third_price = await landingPage.textInventoryItemPrice.nth(2).textContent() ?? "Null text"
     const third_description = await landingPage.textInventoryItemDescription.nth(2).textContent() ?? "Null text"
 
-
     // add 3 items from landing/inventory page and check shopping cart total icon
     // locators reset once names of buttons change following being clicked, thus nth must be 0 on all counts
     await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
@@ -249,15 +248,6 @@ test.describe('Shopping cart accumulation', () => {
     await expect(shoppingCartPage.textInventoryItemDescription.nth(2)).toHaveText(third_description)
 
     await expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(3)
-
-
-    
-    
-    
-
-    
-
-    // Verify new item in shopping cart
     
     });
 });
@@ -265,19 +255,23 @@ test.describe('Shopping cart accumulation', () => {
 test.describe('Inventory item page behaviour', () => {
   test('', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
+    const shoppingCartPage = new ShoppingCartPage(page);
 
     // Verify button changes when adding/removing item from shopping cart
-    await expect(inventoryItemPage.buttonAddToCart).toBeHidden()
-    await expect(inventoryItemPage.buttonRemoveFromCart).toBeEnabled()
+    await expect(inventoryItemPage.buttonAddToCart).toHaveCount(6)
+    await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(0)
+    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("")
+
+    await inventoryItemPage.buttonAddToCart.nth(0).click()
+
+    await expect(inventoryItemPage.buttonAddToCart).toHaveCount(5)
+    await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(1)
     await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
+    await inventoryItemPage.buttonRemoveFromCart.nth(0).click()
 
-    await inventoryItemPage.buttonRemoveFromCart.click()
-
-    await expect(inventoryItemPage.buttonAddToCart).toBeEnabled
-    await expect(inventoryItemPage.buttonRemoveFromCart).toBeHidden()
+    await expect(inventoryItemPage.buttonAddToCart).toHaveCount(6)
+    await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(0)
     await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
-
-    await inventoryItemPage.buttonAddToCart.click()
 
     await expect(inventoryItemPage.buttonAddToCart).toBeHidden()
     await expect(inventoryItemPage.buttonRemoveFromCart).toBeEnabled()
