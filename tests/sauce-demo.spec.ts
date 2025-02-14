@@ -253,7 +253,7 @@ test.describe('Shopping cart accumulation', () => {
 });
 
 test.describe('Inventory item page behaviour', () => {
-  test('Testing 123', async ({ page }) => {
+  test('', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
 
@@ -263,19 +263,9 @@ test.describe('Inventory item page behaviour', () => {
 
     for ( buttonadd; buttonadd <= buttonrange ; buttonadd++) {
 
-      var message1:string = "clicking = ";
-      console.log(message1 + buttonadd);
-
       await inventoryItemPage.buttonAddToCart.nth(0).click()
-
       await expect(inventoryItemPage.buttonAddToCart).toHaveCount(buttonrange-buttonadd)
-      var message2 = "expect buttonaddtocart to have count:";
-      var count:number = buttonrange-buttonadd
-      console.log(message2 + count);
-
       await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(buttonadd)
-      var message3 = "expect buttonremovefromcart to have count:";
-      console.log(message3 + buttonadd);
 
       // await expect(shoppingCartPage.counterShoppingCartTotal).tobeHidden("")
       // await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("")
