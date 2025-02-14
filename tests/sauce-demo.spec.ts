@@ -272,8 +272,6 @@ test.describe('Inventory item page behaviour', () => {
 
     }
 
-    var message4 = "for loop ended";
-    console.log(message4);
     await shoppingCartPage.buttonShoppingCart.click()
     await expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(6)
     await expect(shoppingCartPage.buttonInventoryItemName).toHaveCount(6)
