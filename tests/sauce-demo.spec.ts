@@ -253,28 +253,40 @@ test.describe('Shopping cart accumulation', () => {
 });
 
 test.describe('Inventory item page behaviour', () => {
-  test('', async ({ page }) => {
+  test('Testing 123', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
 
-    // Verify button changes when adding/removing item from shopping cart
-    await expect(inventoryItemPage.buttonAddToCart).toHaveCount(6)
-    await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(0)
-    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("")
+    var buttonadd:number = 1
+    var buttonrange:number
+    var buttonrange = await inventoryItemPage.buttonAddToCart.count()
 
-    await inventoryItemPage.buttonAddToCart.nth(0).click()
+    for ( buttonadd; buttonadd <= buttonrange ; buttonadd++) {
 
-    await expect(inventoryItemPage.buttonAddToCart).toHaveCount(5)
-    await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(1)
-    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
-    await inventoryItemPage.buttonRemoveFromCart.nth(0).click()
+      var message1:string = "clicking = ";
+      console.log(message1 + buttonadd);
 
-    await expect(inventoryItemPage.buttonAddToCart).toHaveCount(6)
-    await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(0)
-    await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
+      await inventoryItemPage.buttonAddToCart.nth(0).click()
 
-    await expect(inventoryItemPage.buttonAddToCart).toBeHidden()
-    await expect(inventoryItemPage.buttonRemoveFromCart).toBeEnabled()
-    await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("1")
+      await expect(inventoryItemPage.buttonAddToCart).toHaveCount(buttonrange-buttonadd)
+      var message2 = "expect buttonaddtocart to have count:";
+      var count:number = buttonrange-buttonadd
+      console.log(message2 + count);
+
+      await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(buttonadd)
+      var message3 = "expect buttonremovefromcart to have count:";
+      console.log(message3 + buttonadd);
+
+      // await expect(shoppingCartPage.counterShoppingCartTotal).tobeHidden("")
+      // await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("")
+
+    }
+
+    var message4 = "for loop ended";
+    console.log(message4);
+    await shoppingCartPage.buttonShoppingCart.click()
+    await expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(6)
+    await expect(shoppingCartPage.buttonInventoryItemName).toHaveCount(6)
+
   });
 });
