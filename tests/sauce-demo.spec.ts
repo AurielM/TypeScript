@@ -267,9 +267,12 @@ test.describe('Inventory item page behaviour', () => {
       await expect(inventoryItemPage.buttonAddToCart).toHaveCount(buttonrange-buttonadd)
       await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(buttonadd)
 
-      // await expect(shoppingCartPage.counterShoppingCartTotal).tobeHidden("")
-      // await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText("")
-
+      if (buttonrange < 6) {
+        await expect(shoppingCartPage.counterShoppingCartTotal).tobeHidden()
+      } else {
+        var buttonaddstring:String = buttonadd
+        await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText(`${buttonaddstring}`)
+      }
     }
 
     await shoppingCartPage.buttonShoppingCart.click()
