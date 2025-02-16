@@ -11,6 +11,7 @@ export class InventoryItemPage extends Base {
     public textInventoryItemDescription: Locator;
     public buttonAddToCart: Locator;
     public buttonRemoveFromCart: Locator;
+    public buttonSortByLabel: Locator;
     
 
     constructor(page: Page){
@@ -25,8 +26,16 @@ export class InventoryItemPage extends Base {
         this.textInventoryItemDescription = page.locator('div.inventory_details_desc.large_size');
         this.buttonAddToCart = page.locator('div[data-test="inventory-item"] button.btn.btn_primary.btn_small.btn_inventory');
         this.buttonRemoveFromCart = page.locator('div[data-test="inventory-item"] button.btn.btn_secondary.btn_small.btn_inventory');
+        this.buttonSortByLabel = page.locator('span.active_option')
+        
     }
 }
+// create a method that uses the buttonFilterIcon (as below) and uses coordinates to click the filter icon
+// this.buttonFilterIcon = page.locator('span.select_container'); 
 
+// create a method that uses the buttonFilterIcon (as below) and uses coordinates to click the sortby dropdown arrow icon
+// this.buttonSortByDropdownArrow = page.locator('span.select_container');
+
+// reasoning - these two elements are actually pseudo-elements linked to ::before and ::after respectively
 
 

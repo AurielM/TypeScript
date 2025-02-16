@@ -302,7 +302,7 @@ test.describe('Inventory item page behaviour', () => {
     }
 
   });
-  test('Filter button behaviour', async ({ page }) => {
+  test('Filter buttons behaviour', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
 
     // click filter button - expected filtersare present - filter opens/closes
@@ -311,14 +311,18 @@ test.describe('Inventory item page behaviour', () => {
 
     // click dropdown button - filter opens/closes
 
-    // test results of filter in dropdown - A to Z
 
-    // test results of filter in dropdown - Z to A
+});
+test('Filter button page behaviour', async ({ page }) => {
+  const inventoryItemPage = new InventoryItemPage(page);
 
-    // test results of filter in dropdown - low to high
-    
-    // test results of filter in dropdown - high to low
+  // test results of filter in dropdown - A to Z
 
+  // test results of filter in dropdown - Z to A
+
+  // test results of filter in dropdown - low to high
+  
+  // test results of filter in dropdown - high to low
 
 
 
