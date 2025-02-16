@@ -11,6 +11,7 @@ export class InventoryItemPage extends Base {
     public textInventoryItemDescription: Locator;
     public buttonAddToCart: Locator;
     public buttonRemoveFromCart: Locator;
+    public wrapperFilterSortBy: Locator;
     public buttonSortByLabel: Locator;
     
 
@@ -26,10 +27,10 @@ export class InventoryItemPage extends Base {
         this.textInventoryItemDescription = page.locator('div.inventory_details_desc.large_size');
         this.buttonAddToCart = page.locator('div[data-test="inventory-item"] button.btn.btn_primary.btn_small.btn_inventory');
         this.buttonRemoveFromCart = page.locator('div[data-test="inventory-item"] button.btn.btn_secondary.btn_small.btn_inventory');
+        this.wrapperFilterSortBy = page.locator('select.product_sort_container')
         this.buttonSortByLabel = page.locator('span.active_option')
         
     }
-}
 // create a method that uses the buttonFilterIcon (as below) and uses coordinates to click the filter icon
 // this.buttonFilterIcon = page.locator('span.select_container'); 
 
@@ -38,4 +39,13 @@ export class InventoryItemPage extends Base {
 
 // reasoning - these two elements are actually pseudo-elements linked to ::before and ::after respectively
 
+public verifySortByDropdown() {
+    await this.buttonSortByLabel.click()
 
+    var sortByOption = this.wrapperFilterSortBy.locator('option[value="az"')
+
+    for (sortByOption; sortByOption <= 4; sortByOption++){
+
+    }
+}
+}

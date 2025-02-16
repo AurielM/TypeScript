@@ -309,6 +309,7 @@ test.describe('Inventory item page behaviour', () => {
     
     //click sortby label - verify filter options appear/disappear
     await inventoryItemPage.buttonSortByLabel.click()
+    inventoryItemPage.verifySortByDropdown()
     // create function in inventory class to verify dropdown 'option' elements are visible
 
 
