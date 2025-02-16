@@ -154,7 +154,7 @@ test.describe('Pages contain all expected elements', () => {
   });
 
 test.describe('Shopping cart accumulation', () => {
-  test('Adding an item should update the Shopping cart (from landing page and inventory item page)', async ({ page }) => {
+  test('Adding an item to the Shopping cart (from landing page and inventory item page)', async ({ page }) => {
     const landingPage = new LandingPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
     const inventoryItemPage = new InventoryItemPage(page);
@@ -261,6 +261,7 @@ test.describe('Inventory item page behaviour', () => {
     var buttonrange:number
     var buttonrange = await inventoryItemPage.buttonAddToCart.count()
 
+    
     // adding all items to the cart and verifying
     for ( buttonaddorremove; buttonaddorremove <= buttonrange ; buttonaddorremove++) {
 
@@ -280,6 +281,7 @@ test.describe('Inventory item page behaviour', () => {
     await expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(6)
     await expect(shoppingCartPage.buttonInventoryItemName).toHaveCount(6)
 
+
     // removing all items from the cart and verifying
     for ( buttonaddorremove; buttonaddorremove <= buttonrange ; buttonaddorremove++) {
 
@@ -297,8 +299,8 @@ test.describe('Inventory item page behaviour', () => {
     await shoppingCartPage.buttonShoppingCart.click()
     await expect(shoppingCartPage.buttonRemoveFromCart).toHaveCount(0)
     await expect(shoppingCartPage.buttonInventoryItemName).toHaveCount(0)
-
     }
 
   });
+
 });
