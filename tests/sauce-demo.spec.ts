@@ -318,16 +318,16 @@ test.describe('Inventory item page behaviour', () => {
     const inventoryItemPage = new InventoryItemPage(page);
 
     // test results of page for filter in dropdown - A to Z
-    inventoryItemPage.dropdownFilterSortBy.selectOption("Name (A to Z)")
+    await inventoryItemPage.dropdownFilterSortBy.selectOption("Name (A to Z)")
 
     // test results of page for filter in dropdown - Z to A
-    inventoryItemPage.dropdownFilterSortBy.selectOption("Name (Z to A)")
+    await inventoryItemPage.dropdownFilterSortBy.selectOption("Name (Z to A)")
 
     // test results of page for filter in dropdown - low to high
-    inventoryItemPage.dropdownFilterSortBy.selectOption("Price (low to high)")
+    await inventoryItemPage.dropdownFilterSortBy.selectOption("Price (low to high)")
 
     // test results of page for filter in dropdown - high to low
-    inventoryItemPage.dropdownFilterSortBy.selectOption("Price (high to low)")
+    await inventoryItemPage.dropdownFilterSortBy.selectOption("Price (high to low)")
 
 
 
