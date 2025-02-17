@@ -290,7 +290,7 @@ test.describe('Inventory item page behaviour', () => {
       await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(buttonaddorremove)
 
       if (buttonrange < 6) {
-        await expect(shoppingCartPage.counterShoppingCartTotal).tobeHidden()
+        await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
       } else {
         var buttonaddstring:String = buttonaddorremove
         await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText(`${buttonaddstring}`)
@@ -308,25 +308,28 @@ test.describe('Inventory item page behaviour', () => {
     // click filter button - expected filtersare present - filter opens/closes
     
     //click sortby label - verify filter options appear/disappear
-    await inventoryItemPage.buttonSortByLabel.click()
-    inventoryItemPage.verifySortByDropdown()
-    // create function in inventory class to verify dropdown 'option' elements are visible
+    await inventoryItemPage.dropdownFilterSortBy.click()
+    
 
 
     // click dropdown arrow button - filter opens/closes
 
 
 });
-test('Filter button page behaviour', async ({ page }) => {
-  const inventoryItemPage = new InventoryItemPage(page);
+  test('Filter button page behaviour', async ({ page }) => {
+    const inventoryItemPage = new InventoryItemPage(page);
 
-  // test results of page for filter in dropdown - A to Z
+    // test results of page for filter in dropdown - A to Z
+    inventoryItemPage.dropdownFilterSortBy.selectOption("Name (A to Z)")
 
-  // test results of page for filter in dropdown - Z to A
+    // test results of page for filter in dropdown - Z to A
+    inventoryItemPage.dropdownFilterSortBy.selectOption("Name (Z to A)")
 
-  // test results of page for filter in dropdown - low to high
-  
-  // test results of page for filter in dropdown - high to low
+    // test results of page for filter in dropdown - low to high
+    inventoryItemPage.dropdownFilterSortBy.selectOption("Price (low to high)")
+
+    // test results of page for filter in dropdown - high to low
+    inventoryItemPage.dropdownFilterSortBy.selectOption("Price (high to low)")
 
 
 
