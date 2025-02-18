@@ -299,15 +299,19 @@ test.describe('Inventory item page behaviour', () => {
     }
 
   });
-  test('Filters present', async ({ page }) => {
+  test('Sortby page beahviour', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
 
     //click sortby label
     await inventoryItemPage.dropdownFilterSortBy.click()
 
+    // verify page order (function in class, e.g. A-z = list)
+
+    // select next dropdown element by text: first filter, verify page order (function in class, e.g. A-z = list)
+    // create for loop in function (in class) to check and input list comparison per use of this loop
 
 });
-  test('Filter button page behaviour', async ({ page }) => {
+  test('', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
 
     // test results of page for filter in dropdown - A to Z
