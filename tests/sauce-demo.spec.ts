@@ -303,12 +303,12 @@ test.describe('Inventory item page behaviour', () => {
   test('Filter buttons behaviour', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
 
-    // click filter button - expected filtersare present - filter opens/closes
-    
+    // click filter button - expected filters are present - filter opens/closes
+    await inventoryItemPage.clickFilterIcon()
     //click sortby label - verify filter options appear/disappear
     await inventoryItemPage.dropdownFilterSortBy.click()
     
-
+    await inventoryItemPage.clickSortbyIcon()
 
     // click dropdown arrow button - filter opens/closes
 
