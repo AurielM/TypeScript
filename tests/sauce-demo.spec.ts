@@ -253,7 +253,7 @@ test.describe('Shopping cart accumulation', () => {
 });
 
 test.describe('Inventory item page behaviour', () => {
-  test('Adding and removing all items from the iventory item page', async ({ page }) => {
+  test('Adding and removing all items from the inventory item page', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
 
@@ -299,17 +299,11 @@ test.describe('Inventory item page behaviour', () => {
     }
 
   });
-  test('Filter buttons behaviour', async ({ page }) => {
+  test('Filters present', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
 
-    // click filter button - expected filters are present - filter opens/closes
-    await inventoryItemPage.clickFilterIcon()
-    //click sortby label - verify filter options appear/disappear
+    //click sortby label
     await inventoryItemPage.dropdownFilterSortBy.click()
-    
-    await inventoryItemPage.clickSortbyIcon()
-
-    // click dropdown arrow button - filter opens/closes
 
 
 });
