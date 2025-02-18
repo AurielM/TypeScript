@@ -258,7 +258,6 @@ test.describe('Inventory item page behaviour', () => {
     const shoppingCartPage = new ShoppingCartPage(page);
 
     var buttonaddorremove:number = 1
-    var buttonrange:number
     var buttonrange = await inventoryItemPage.buttonAddToCart.count()
 
     
