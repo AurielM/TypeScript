@@ -39,7 +39,11 @@ export class InventoryItemPage extends Base {
 
 // create a method that uses the buttonFilterIcon (as below) and uses coordinates to click the sortby dropdown arrow icon
 // this.buttonSortByDropdownArrow = page.locator('span.select_container');
-
+    public async clickSortbyIcon() {
+        // const box = (await this.dropdownFilterSortBy.boundingBox())!;
+        // await this.dropdownFilterSortBy.click(box.x + box.width / 2, box.y + box.height - 5);
+        await this.dropdownFilterSortBy.click({position: {x: 1, y: 10}});
+    }
 // reasoning - these two elements are actually pseudo-elements linked to ::before and ::after respectively
 
 }
