@@ -299,7 +299,7 @@ test.describe('Inventory item page behaviour', () => {
     }
 
   });
-  test('Sortby page beahviour', async ({ page }) => {
+  test('Sortby page behaviour', async ({ page }) => {
     const inventoryItemPage = new InventoryItemPage(page);
 
     //click sortby label
