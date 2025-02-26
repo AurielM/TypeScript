@@ -257,21 +257,21 @@ test.describe('Inventory item page behaviour', () => {
     const inventoryItemPage = new InventoryItemPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
 
-    var buttonaddorremove:number = 1
-    var buttonrange = await inventoryItemPage.buttonAddToCart.count()
+    var buttonAddOrRemove:number = 1
+    var buttonRange = await inventoryItemPage.buttonAddToCart.count()
 
     
     // adding all items to the cart and verifying
-    for ( buttonaddorremove; buttonaddorremove <= buttonrange ; buttonaddorremove++) {
+    for ( buttonAddOrRemove; buttonAddOrRemove <= buttonRange ; buttonAddOrRemove++) {
 
       await inventoryItemPage.buttonAddToCart.nth(0).click()
-      await expect(inventoryItemPage.buttonAddToCart).toHaveCount(buttonrange-buttonaddorremove)
-      await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(buttonaddorremove)
+      await expect(inventoryItemPage.buttonAddToCart).toHaveCount(buttonRange-buttonAddOrRemove)
+      await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(buttonAddOrRemove)
 
-      if (buttonrange < 6) {
+      if (buttonRange < 6) {
         await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
       } else {
-        await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText(`${buttonaddorremove}`)
+        await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText(`${buttonAddOrRemove}`)
       }
     }
 
@@ -281,16 +281,16 @@ test.describe('Inventory item page behaviour', () => {
 
 
     // removing all items from the cart and verifying
-    for ( buttonaddorremove; buttonaddorremove <= buttonrange ; buttonaddorremove++) {
+    for ( buttonAddOrRemove; buttonAddOrRemove <= buttonRange ; buttonAddOrRemove++) {
 
       await inventoryItemPage.buttonRemoveFromCart.nth(0).click()
-      await expect(inventoryItemPage.buttonAddToCart).toHaveCount(buttonrange-buttonaddorremove)
-      await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(buttonaddorremove)
+      await expect(inventoryItemPage.buttonAddToCart).toHaveCount(buttonRange-buttonAddOrRemove)
+      await expect(inventoryItemPage.buttonRemoveFromCart).toHaveCount(buttonAddOrRemove)
 
-      if (buttonrange < 6) {
+      if (buttonRange < 6) {
         await expect(shoppingCartPage.counterShoppingCartTotal).toBeHidden()
       } else {
-        await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText(`${buttonaddorremove}`)
+        await expect(shoppingCartPage.counterShoppingCartTotal).toHaveText(`${buttonAddOrRemove}`)
       }
 
     await shoppingCartPage.buttonShoppingCart.click()
