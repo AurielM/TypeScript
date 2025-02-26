@@ -12,8 +12,8 @@ export class InventoryItemPage extends Base {
     public buttonAddToCart: Locator;
     public buttonRemoveFromCart: Locator;
     public dropdownFilterSortBy: Locator;
-    public InventoryTitlesArray: string[];
-    public InventoryPricesArray: string[];
+    public inventoryTitles: string[];
+    public inventoryPrices: string[];
 
     
 
@@ -30,7 +30,7 @@ export class InventoryItemPage extends Base {
         this.buttonAddToCart = page.locator('div[data-test="inventory-item"] button.btn.btn_primary.btn_small.btn_inventory');
         this.buttonRemoveFromCart = page.locator('div[data-test="inventory-item"] button.btn.btn_secondary.btn_small.btn_inventory');
         this.dropdownFilterSortBy = page.locator('select.product_sort_container');
-        this.InventoryTitlesArray = ["Sauce Labs Backpack", "Sauce Labs Bike Light", "Sauce Labs Bolt T-Shirt","Sauce Labs Fleece Jacket", "Sauce Labs Onesie", "Test.allTheThings() T-Shirt (Red)"];
-        this.InventoryPricesArray = ["$29.99", "$9.99", "$15.99", "$49.00", "$7.99", "$15.99"];
+        this.inventoryTitles = ["Sauce Labs Backpack", "Sauce Labs Bike Light", "Sauce Labs Bolt T-Shirt","Sauce Labs Fleece Jacket", "Sauce Labs Onesie", "Test.allTheThings() T-Shirt (Red)"];
+        this.inventoryPrices = ["$7.99", "$9.99", "$15.99", "$15.99", "$29.99", "$49.00"];
     }
 }
