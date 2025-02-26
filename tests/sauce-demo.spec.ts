@@ -257,8 +257,8 @@ test.describe('Inventory item page behaviour', () => {
     const inventoryItemPage = new InventoryItemPage(page);
     const shoppingCartPage = new ShoppingCartPage(page);
 
-    var buttonAddOrRemove:number = 1
-    var buttonRange = await inventoryItemPage.buttonAddToCart.count()
+    let buttonAddOrRemove:number = 1
+    let buttonRange = await inventoryItemPage.buttonAddToCart.count()
 
     
     // adding all items to the cart and verifying
